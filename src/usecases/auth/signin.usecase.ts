@@ -1,4 +1,4 @@
-import { lucia } from "@/lib/auth";
+import { lucia } from "@/lib/lucia/auth";
 import { SignIn } from "@/lib/validation-schemas/auth/signin.schema";
 import { verify } from "@node-rs/argon2";
 import { PrismaClient } from "@prisma/client";

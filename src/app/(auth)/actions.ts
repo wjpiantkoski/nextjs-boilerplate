@@ -6,7 +6,11 @@ import { signupSchema } from "@/lib/validation-schemas/auth/signup.schema";
 import signupUsecase from "@/usecases/auth/signup.usecase";
 
 export async function signUp(formData: FormData) {
-  const validated = await signupSchema.safeParseAsync(formData);
+  const validated = signupSchema.safeParse({
+    name: formData.get("name") as string,
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  });
 
   if (!validated.success) {
     throw new Error("Invalid form data");

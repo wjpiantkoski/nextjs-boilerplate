@@ -20,7 +20,11 @@ export async function signUp(formData: FormData) {
 
   const sessionCookie = await signupUsecase(validated.data);
 
-  cookies().set("session", sessionCookie.serialize());
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
 
   redirect("/");
 }
@@ -37,7 +41,11 @@ export async function signIn(formData: FormData) {
 
   const sessionCookie = await signinUsecase(validated.data);
 
-  cookies().set("session", sessionCookie.serialize());
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
 
   redirect("/");
 }

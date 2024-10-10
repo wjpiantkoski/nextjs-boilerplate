@@ -6,6 +6,7 @@ import signupUsecase from "@/usecases/auth/signup.usecase";
 import { signupSchema } from "@/lib/validation-schemas/auth/signup.schema";
 import { signinSchema } from "@/lib/validation-schemas/auth/signin.schema";
 import signinUsecase from "@/usecases/auth/signin.usecase";
+import signoutUsecase from "@/usecases/auth/signout.usecase";
 
 export async function signUp(formData: FormData) {
   const validated = signupSchema.safeParse({
@@ -48,4 +49,16 @@ export async function signIn(formData: FormData) {
   );
 
   redirect("/");
+}
+
+export async function signOut() {
+  const sessionCookie = await signoutUsecase();
+
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
+
+  redirect("/sign-in");
 }

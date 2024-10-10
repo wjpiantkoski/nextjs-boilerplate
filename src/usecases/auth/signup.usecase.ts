@@ -24,10 +24,7 @@ export default async function signupUsecase(input: SignUp): Promise<Cookie> {
     },
   });
 
-  const session = await lucia.createSession(userId, {
-    id: userId,
-    email: input.email,
-  });
+  const session = await lucia.createSession(userId, {});
 
   return lucia.createSessionCookie(session.id);
 }

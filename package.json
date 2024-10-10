@@ -10,6 +10,7 @@
     "up:dev": "docker compose --file ./compose.dev.yaml up --watch"
   },
   "dependencies": {
+    "@lucia-auth/adapter-prisma": "^4.0.1",
     "@prisma/client": "^5.20.0",
     "lucia": "^3.2.1",
     "next": "14.2.15",

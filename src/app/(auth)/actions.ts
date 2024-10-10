@@ -9,10 +9,7 @@ export async function signUp(formData: FormData) {
   const validated = await signupSchema.safeParseAsync(formData);
 
   if (!validated.success) {
-    return {
-      error: true,
-      message: "Invalid form data",
-    };
+    throw new Error("Invalid form data");
   }
 
   const sessionCookie = await signupUsecase(validated.data);

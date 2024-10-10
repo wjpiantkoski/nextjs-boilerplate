@@ -3,7 +3,7 @@ services:
     image: postgres:15-alpine
     restart: always
     environment:
-      PGUSER: local-user
+      PGUSER: postgres
       POSTGRES_PASSWORD: local-password
     ports:
       - "5432:5432"
